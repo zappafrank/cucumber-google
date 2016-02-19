@@ -7,17 +7,17 @@ When(/^I search google for a common term$/) do
 end
 
 Then(/^each search result title contains the search term$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-  # get the results
-  # compare the search term to each of the result titles
   results = @browser.divs(class: 'g')
   results.each do |result|
-    # do something with 'expect'
+    expect(result.div.h3.text.downcase).to include 'socks'
+    puts result.div.h3.text
   end
 end
 
 And(/^each search result summary contains the search term$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-  # go get the results
-  # compare the search term to each result summary
+  results = @browser.divs(class: 'g')
+  results.each do |result|
+    expect(result.div.div.div.text.downcase).to include 'socks'
+    puts result.div.div.div.text
+  end
 end
